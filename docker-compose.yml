@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  toDoList:
+    image: docker.io/bitnami/symfony:1
+    ports:
+      - '8000:8000'
+    volumes:
+      - '.:/app'
+    depends_on:
+      - mysqldb
+  mysqldb:
+      image: mysql
+      command: --default-authentication-plugin=mysql_native_password
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: example
