@@ -1,4 +1,12 @@
 api_platform:
+    title: 'To Do List'
+    description: 'Technic task for Gherman Adrian'
+    version: '0.0.0'
+    show_webby: false
+    validator:
+        # Enable the serialization of payload fields when a validation error is thrown.
+        # If you want to serialize only some payload fields, define them like this: [ severity, anotherPayloadField ]
+        serialize_payload_fields: [ ]
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
