@@ -20,8 +20,8 @@ class ToDoListFixtures extends Fixture
             $toDoList = new ToDoList();
             $toDoList->setName('name'.$item);
             $toDoList->setDescription('description'.$item);
-            $toDoList->setDataCreated(new \DateTime('now + '.$item.' day'));
-            $toDoList->setDateUpdated(new \DateTime('now + '.$item.' day'));
+            $toDoList->prepareDataCreated(new \DateTime('now + '.$item.' day'));
+            $toDoList->prepareDataUpdated(new \DateTime('now + '.$item.' day'));
             $manager->persist($toDoList);
         }
         $manager->flush();
