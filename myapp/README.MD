@@ -12,6 +12,6 @@
 - `bin/console doctrine:schema:validate`
 - `bin/console doctrine:migration:diff`
 - `bin/console doctrine:migration:migrate`
-- `bin/console doctrine:fixtures:load`
+- bin/console doctrine:fixtures:load
 6. Open http://0.0.0.0:8000/api
 

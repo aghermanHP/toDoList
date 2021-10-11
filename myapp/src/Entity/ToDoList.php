@@ -8,10 +8,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Operation\PathSegmentNameGeneratorInterface;
 
 /**
  * A To Do
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={"get"={"path"="todolists"}, "post"={"path"="todolists"}},
+ *     itemOperations={"get"={"path"="todolists/{id}"}, "put"={"path"="todolists/{id}"} },
+ * )
  *
  * @ORM\Table(name="ToDoList")
  * @ORM\Entity(repositoryClass="App\Repository\ToDoListRepository")
@@ -45,7 +49,7 @@ class ToDoList
      *
      * @var $description string
      *
-     * @Assert\Date
+     * @Assert\NotBlank
      *
      * @ORM\Column(name="description", type="string", nullable=false)
      */
@@ -56,9 +60,9 @@ class ToDoList
      *
      * @var $dateUpdated DateTime
      *
-     * @Assert\Date
+     * @Assert\Type("datetime")
      *
-     * @ORM\Column(name="dateUpdated", type="date",  nullable=true)
+     * @ORM\Column(name="dateUpdated", type="datetime",  nullable=true)
      */
     private $dateUpdated = null;
 
@@ -69,9 +73,10 @@ class ToDoList
      *
      * @var $dataCreated DateTime
      *
-     * @Assert\NotBlank
+     * @Assert\Type("datetime")
+     * @var string A "Y-m-d H:i:s"
      *
-     * @ORM\Column(name="dataCreated", type="date",  nullable=false)
+     * @ORM\Column(name="dataCreated", type="datetime",  nullable=false)
      */
     private $dataCreated = null;
 
@@ -140,17 +145,17 @@ class ToDoList
     }
 
     /**
-     * @param $createdAt
+     * @param $createdAt DateTime
      */
-    public function prepareDataCreated($createdAt)
+    public function prepareDataCreated(DateTime $createdAt)
     {
         $this->dataCreated = $createdAt;
     }
 
     /**
-     * @param $updatedAt
+     * @param $updatedAt DateTime
      */
-    public function prepareDataUpdated($updatedAt)
+    public function prepareDataUpdated(DateTime $updatedAt)
     {
         $this->dateUpdated = $updatedAt;
     }

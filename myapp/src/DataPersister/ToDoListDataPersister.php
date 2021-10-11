@@ -28,7 +28,7 @@ class ToDoListDataPersister implements ContextAwareDataPersisterInterface
                 ($context['graphql_operation_name'] ?? null) === 'create'
             )
         ) {
-            $data->prepareDataCreated(new \DateTime());
+            $data->prepareDataCreated(new \DateTime('now'));
             $this->entityManager->persist($data);
             $this->entityManager->flush();
         }
@@ -37,7 +37,8 @@ class ToDoListDataPersister implements ContextAwareDataPersisterInterface
                 ($context['item_operation_name'] ?? null) === 'put'
             )
         ) {
-            $data->prepareDataUpdated(new \DateTime());
+            $data->prepareDataUpdated(new \DateTime('now'));
+            die(var_dump($data));
             $this->entityManager->persist($data);
             $this->entityManager->flush();
         }
