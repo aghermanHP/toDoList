@@ -21,4 +21,3 @@ services:
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
     App\DataPersister\ToDoListDataPersister: ~
-    App\Operation\SingularPathSegmentNameGenerator: ~

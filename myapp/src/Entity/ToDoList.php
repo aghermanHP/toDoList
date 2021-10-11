@@ -8,7 +8,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use ApiPlatform\Core\Operation\PathSegmentNameGeneratorInterface;
 
 /**
  * A To Do
