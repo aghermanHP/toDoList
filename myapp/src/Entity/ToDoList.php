@@ -74,7 +74,6 @@ class ToDoList
      * @var $dataCreated DateTime
      *
      * @Assert\Type("datetime")
-     * @var string A "Y-m-d H:i:s"
      *
      * @ORM\Column(name="dataCreated", type="datetime",  nullable=false)
      */
