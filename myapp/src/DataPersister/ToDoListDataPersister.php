@@ -38,7 +38,6 @@ class ToDoListDataPersister implements ContextAwareDataPersisterInterface
             )
         ) {
             $data->prepareDataUpdated(new \DateTime('now'));
-            die(var_dump($data));
             $this->entityManager->persist($data);
             $this->entityManager->flush();
         }
